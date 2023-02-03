@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\jorme\source\repos\FAL6_07\FAL6_07\Source.cpp(40,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\jorme\source\repos\FAL6_07\FAL6_07\Source.cpp(43,33): warning C4244: '=': conversión de 'const double' a 'int'; posible pérdida de datos
+  FAL6_07.vcxproj -> C:\Users\jorme\source\repos\FAL6_07\Debug\FAL6_07.exe

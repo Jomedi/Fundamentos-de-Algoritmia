@@ -1,0 +1,118 @@
+﻿// Nombre del alumno ..... Jorge Medina Carretero
+// Usuario del Juez ...... F46
+
+
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+// función que resuelve el problema
+int buscarIz(vector<int> sospechosos, int altura, int ini, int fin) {
+    if (fin - ini == 1) {
+        if (sospechosos[ini] == altura)
+            return ini;
+        else
+            return -1;
+    }
+    else if (fin - ini == 2) {
+        if (sospechosos[ini] == altura)
+            return ini;
+        else if (sospechosos[ini + 1] == altura)
+            return ini + 1;
+        else
+            return -1;
+    }
+
+    int sol;
+    int mitad = (ini + fin) / 2;
+    if (sospechosos[mitad - 1] >= altura)
+        sol = buscarIz(sospechosos, altura, ini, mitad);
+    else 
+        sol = buscarIz(sospechosos, altura, mitad, fin);
+
+    return sol;
+}
+
+int buscarDr(vector<int> sospechosos, int altura, int ini, int fin) {
+    if (fin - ini == 1) {
+        if (sospechosos[ini] == altura)
+            return ini;
+        else
+            return -1;
+    }
+    else if (fin - ini == 2) {
+        if (sospechosos[ini + 1] == altura)
+            return ini + 1;
+        else if (sospechosos[ini] == altura)
+            return ini;
+        else
+            return -1;
+    }
+
+    int sol;
+    int mitad = (ini + fin) / 2;
+    if (sospechosos[mitad] <= altura)
+        sol = buscarDr(sospechosos, altura, mitad, fin);
+    else
+        sol = buscarDr(sospechosos, altura, ini, mitad);
+
+    return sol;
+}
+
+// Resuelve un caso de prueba, leyendo de la entrada la
+// configuración, y escribiendo la respuesta
+bool resuelveCaso() {
+    // leer los datos de la entrada
+    int N, altura;
+    cin >> N;
+
+    if (!std::cin)
+        return false;
+
+    if (N > 0) {
+        cin >> altura;
+        vector<int> sospechosos(N);
+        for (int i = 0; i < N; i++)
+            cin >> sospechosos[i];
+
+        // escribir sol
+        int iz = buscarIz(sospechosos, altura, 0, sospechosos.size());
+        int dr = buscarDr(sospechosos, altura, 0, sospechosos.size());
+        if (iz == dr && iz != -1)
+            cout << iz << '\n';
+        else if (iz != dr)
+            cout << iz << " " << dr << '\n';
+        else
+            cout << "NO EXISTE" << '\n';
+    }
+    else
+        cout << "NO EXISTE" << '\n';
+
+    return true;
+
+}
+
+int main() {
+    // Para la entrada por fichero.
+    // Comentar para acepta el reto
+#ifndef DOMJUDGE
+    std::ifstream in("datos.txt");
+    auto cinbuf = std::cin.rdbuf(in.rdbuf()); //save old buf and redirect std::cin to casos.txt
+#endif 
+
+
+    while (resuelveCaso())
+        ;
+
+
+    // Para restablecer entrada. Comentar para acepta el reto
+#ifndef DOMJUDGE // para dejar todo como estaba al principio
+    std::cin.rdbuf(cinbuf);
+    system("PAUSE");
+#endif
+
+    return 0;
+}

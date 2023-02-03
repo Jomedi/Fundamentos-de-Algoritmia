@@ -1,0 +1,6 @@
+﻿  Source.cpp
+C:\Users\jorme\source\repos\FAL6_02\FAL6_02\Source.cpp(23,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\jorme\source\repos\FAL6_02\FAL6_02\Source.cpp(24,27): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\jorme\source\repos\FAL6_02\FAL6_02\Source.cpp(29,23): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\jorme\source\repos\FAL6_02\FAL6_02\Source.cpp(36,23): warning C4018: '<': no coinciden signed/unsigned
+  FAL6_02.vcxproj -> C:\Users\jorme\source\repos\FAL6_02\Debug\FAL6_02.exe
